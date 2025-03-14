@@ -28,6 +28,11 @@ def menu_principal():
     print("5 - Games")
     print("6 - Termos")
 
+
+
+
+
+
 while True:
     menu_principal()
     escolha = input("Digite o numero que representa sua escolha")
