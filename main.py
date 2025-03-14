@@ -33,6 +33,8 @@ def menu_principal():
 
 
 
+
+
 while True:
     menu_principal()
     escolha = input("Digite o numero que representa sua escolha")
