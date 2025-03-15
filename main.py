@@ -1,9 +1,9 @@
 import os
 from time import sleep
 
-
+# uma função de menu principal
 def menu_principal():
-    
+    #toda vez que for chamada a funçao será executado esse while
     while True:
         os.system("cls")
         print("🌐 1 - Python")
@@ -21,7 +21,7 @@ def menu_principal():
             print("Saindo")
             exit()
     
-
+#função python referente a primeira opçao do menu principal
 def python():
     print("Abrindo Python!")
     print("Python e feito para programadores")
@@ -30,13 +30,13 @@ def python():
        menu_principal()
     
     
-
+# tela de Bem vindo
 print("Olá, bem-vindo à Plataforma Educacional")
 
-senha_correta = "admin"
-login_correto = "admin"
+login_correto = "admin"  #login correto para entrar no aplicativo
+senha_correta = "admin"  #senha correta para entrar no aplicativo 
 
-
+# while feito para comparar o que a pessoa digitou com a senha se estiver correta segue normalmente, se não fica no loop até acertar
 while True:
     login = input("Digite a login: ")
     senha = input("Digite o senha: ")
@@ -47,6 +47,6 @@ while True:
         print("Acesso negado. Tente novamente.")
         os.system("cls")
     
-
+# chamando a funçao menu principal
 menu_principal()
 
