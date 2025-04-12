@@ -1,5 +1,5 @@
 import os
-from time import sleep
+import time
 
 # uma função de menu principal
 def menu_principal():
@@ -44,7 +44,8 @@ while True:
         print("Acesso permitido!")
         break
     else:
-        print("Acesso negado. Tente novamente.")
+        print("Acesso negado. Aguarde 3 Segundos e Tente novamente.")
+        time.sleep(3) 
         os.system("cls")
     
 # chamando a funçao menu principal
