@@ -1,0 +1,29 @@
+{
+    "credenciais": [
+        {
+            "usuario": "diogo",
+            "nome_completo": "Diogo Souza dos Santos",
+            "senha_hash": "ea39876a19a43971839b84934a6e839316881b5ec44a4c88f34472c5314e7608"
+        },
+        {
+            "usuario": "retruca",
+            "nome_completo": "Jeremias Claudio",
+            "senha_hash": "ea39876a19a43971839b84934a6e839316881b5ec44a4c88f34472c5314e7608"
+        },
+        {
+            "usuario": "jureg",
+            "nome_completo": "jusias",
+            "senha_hash": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
+        },
+        {
+            "usuario": "jusias",
+            "nome_completo": "kraudio",
+            "senha_hash": "8d23cf6c86e834a7aa6eded54c26ce2bb2e74903538c61bdd5d2197997ab2f72"
+        },
+        {
+            "usuario": "maicon",
+            "nome_completo": "claidos",
+            "senha_hash": "8d23cf6c86e834a7aa6eded54c26ce2bb2e74903538c61bdd5d2197997ab2f72"
+        }
+    ]
+}
