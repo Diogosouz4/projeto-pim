@@ -1,5 +1,16 @@
 {
-    "Python Básico": [
-        10
-    ]
+    "Python Básico": {
+        "diogo": 9,
+        "douglas": 8,
+        "jere": 6
+    },
+    "Hardwares": {
+        "diogo": 4
+    },
+    "Cibersegurança": {
+        "douglas": 0
+    },
+    "Softwares": {
+        "douglas": 8
+    }
 }

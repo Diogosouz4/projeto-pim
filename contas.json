@@ -1,7 +1,27 @@
 [
     {
-        "usuario": "retruca",
+        "usuario": "diogo",
         "senha_hash": "ea39876a19a43971839b84934a6e839316881b5ec44a4c88f34472c5314e7608",
         "nome_completo": "Diogo Souza dos Santos"
+    },
+    {
+        "usuario": "douglas",
+        "senha_hash": "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f",
+        "nome_completo": "Douglas Bueno Silva"
+    },
+    {
+        "usuario": "richard",
+        "senha_hash": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
+        "nome_completo": "richard"
+    },
+    {
+        "usuario": "jeremias",
+        "senha_hash": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+        "nome_completo": "Jeremias Silva Aldo"
+    },
+    {
+        "usuario": "jere",
+        "senha_hash": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+        "nome_completo": "Jeremias Claudio Aldo"
     }
 ]

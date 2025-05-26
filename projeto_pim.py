@@ -19,6 +19,7 @@ import statistics
 import subprocess
 import sys
 import hashlib
+import getpass
 
 # --- Constantes e Arquivos ---
 ARQUIVO_CONTAS = 'contas.json'
@@ -117,7 +118,7 @@ def criar_conta():
         print('⚠️ Nome não pode ser vazio!')
         return None
     while True:
-        usuario = input('Escolha um nome de usuário (único): ').strip()
+        usuario = input('Escolha um nome de usuário: ').strip()
         if not usuario:
             print('⚠️ Nome de usuário não pode ser vazio!')
         elif any(c['usuario'].lower() == usuario.lower() for c in contas):
@@ -125,8 +126,8 @@ def criar_conta():
         else:
             break
     while True:
-        senha = input('Digite uma senha: ').strip()
-        senha_conf = input('Confirme sua senha: ').strip()
+        senha = getpass.getpass('Digite uma senha: ').strip()
+        senha_conf = getpass.getpass('Confirme sua senha: ').strip()
         if senha != senha_conf:
             print('⚠️ Senhas não conferem. Tente novamente.')
         else:
@@ -141,7 +142,7 @@ def criar_conta():
 def autenticar():
     contas = carregar_json(ARQUIVO_CONTAS, [])
     usuario = input('Nome de usuário: ').strip()
-    senha = input('Senha: ').strip()
+    senha = getpass.getpass('Senha: ').strip()
     hash_senha = hashlib.sha256(senha.encode()).hexdigest()
     for c in contas:
         if c['usuario'].lower() == usuario.lower() and c.get('senha_hash') == hash_senha:
@@ -192,26 +193,41 @@ def calcular_estatisticas():
 
 # --- Funções de Prova ---
 def fazer_prova(disciplina, conta):
-    notas = carregar_json(ARQUIVO_NOTAS, {})
-    usuario = conta['usuario']
-    notas.setdefault(disciplina, {})
+    notas = carregar_json(ARQUIVO_NOTAS, {})  # Carrega o arquivo de notas
+    usuario = conta["usuario"]               # Identifica o usuário atual
+
+    # Garante que o dicionário da disciplina exista
+    if disciplina not in notas:
+        notas[disciplina] = {}
+
+    # Verifica se o usuário já realizou a prova
     if usuario in notas[disciplina]:
-        print(f"Você já realizou a prova de {disciplina}. Pontuação: {notas[disciplina][usuario]}")
+        print(f"⚠️ Você já realizou a prova de {disciplina}. Pontuação: {notas[disciplina][usuario]}/10")
         return
+
     questoes = QUESTOES.get(disciplina, [])
     if len(questoes) < NUM_QUESTOES:
-        print('⚠️ Banco de questões incompleto.')
+        print("⚠️ Banco de questões incompleto.")
         return
-    if input(f"Iniciar prova de {disciplina}? (s/n): ").strip().lower() != 's':
+
+    confirmar = input(f"Deseja iniciar a prova de {disciplina}? (s/n): ").strip().lower()
+    if confirmar != 's':
         return
-    pont = 0
+
+    # Início da prova
+    pontuacao = 0
     for i, q in enumerate(questoes[:NUM_QUESTOES], 1):
         print(f"\n{i}. {q['enunciado']}")
-        for opc, txt in q['opcoes'].items(): print(f"{opc}) {txt}")
-        if input('Resp: ').strip().upper() == q['resposta']:
-            pont += 1
-    print(f"Sua pontuação: {pont}/{NUM_QUESTOES}")
-    notas[disciplina][usuario] = pont
+        for letra, texto in q["opcoes"].items():
+            print(f"  {letra}) {texto}")
+        resposta = input("Sua resposta: ").strip().upper()
+        if resposta == q["resposta"]:
+            pontuacao += 1
+
+    print(f"\n✅ Prova concluída! Pontuação: {pontuacao}/{NUM_QUESTOES}")
+
+    # Armazena a nota no JSON usando disciplina -> usuario
+    notas[disciplina][usuario] = pontuacao
     salvar_json(ARQUIVO_NOTAS, notas)
 
 # --- Função Principal ---
